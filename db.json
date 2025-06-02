@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Organic Tomatoes",
+      "type": "Vegetables",
+      "price": 2.99,
+      "marketPrice": 3.49,
+      "quantity": 100
+    },
+    {
+      "id": "2",
+      "name": "Fresh Spinach",
+      "type": "Leafy Greens",
+      "price": 3.49,
+      "marketPrice": 3.29,
+      "quantity": 75
+    },
+    {
+      "id": "3",
+      "name": "Sweet Corn",
+      "type": "Grains",
+      "price": 1.99,
+      "marketPrice": 2.49,
+      "quantity": 150
+    },
+    {
+      "id": "c915",
+      "name": "wheat",
+      "type": "crop",
+      "price": 5,
+      "quantity": 100
+    },
+    {
+      "id": "1f75",
+      "name": "wheat",
+      "type": "crop",
+      "price": 1000,
+      "quantity": 150
+    }
+  ]
+}
