@@ -155,66 +155,60 @@ const cropEmojis = {
 };
 
 const Home = () => {
-  // Get the current language (Hindi or English)
   const { language } = useLanguage();
-  // Keep track of which slogan to show
   const [currentSlogan, setCurrentSlogan] = useState(0);
-  // Get the right translations for current language
   const t = translations[language];
 
-  // This makes our slogans rotate every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlogan((prev) => (prev + 1) % slogans.length);
     }, 4000);
-    // Clean up when component unmounts
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Cool rotating banner with farmer slogans */}
-      <div className="bg-green-600 text-white py-8">
+      {/* Rotating banner with farmer slogans */}
+      <div className="bg-green-600 text-white py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fade-in">
             {slogans[currentSlogan]}
           </h2>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* About section explaining what our app does */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">{t.aboutTitle}</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* About section */}
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">{t.aboutTitle}</h2>
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             {t.aboutText}
           </p>
         </section>
 
-        {/* Big button to go to product list */}
-        <section className="mb-16 text-center">
+        {/* Product list button */}
+        <section className="mb-12 sm:mb-16 text-center">
           <Link
             to="/products"
-            className="inline-flex items-center px-8 py-4 border border-transparent text-xl font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-lg sm:text-xl font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
           >
             {t.viewProducts}
           </Link>
         </section>
 
-        {/* Cards showing different government schemes */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{t.policiesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Each card shows info about a government scheme */}
+        {/* Government schemes section */}
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">{t.policiesTitle}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* PM Kisan Card */}
-            <div className="bg-green-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.pmKisan}</h3>
-              <p className="text-gray-600 text-sm mb-4">{t.pmKisanDesc}</p>
+            <div className="bg-green-50 rounded-lg p-4 sm:p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">{t.pmKisan}</h3>
+              <p className="text-sm text-gray-600 mb-3 sm:mb-4">{t.pmKisanDesc}</p>
               <a
                 href={policyLinks.pmKisan}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium"
+                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium text-sm sm:text-base"
               >
                 {t.readMore}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,14 +218,14 @@ const Home = () => {
             </div>
 
             {/* Crop Insurance Card */}
-            <div className="bg-green-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.cropInsurance}</h3>
-              <p className="text-gray-600 text-sm mb-4">{t.cropInsuranceDesc}</p>
+            <div className="bg-green-50 rounded-lg p-4 sm:p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">{t.cropInsurance}</h3>
+              <p className="text-sm text-gray-600 mb-3 sm:mb-4">{t.cropInsuranceDesc}</p>
               <a
                 href={policyLinks.cropInsurance}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium"
+                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium text-sm sm:text-base"
               >
                 {t.readMore}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,14 +235,14 @@ const Home = () => {
             </div>
 
             {/* e-NAM Card */}
-            <div className="bg-green-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.eNam}</h3>
-              <p className="text-gray-600 text-sm mb-4">{t.eNamDesc}</p>
+            <div className="bg-green-50 rounded-lg p-4 sm:p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">{t.eNam}</h3>
+              <p className="text-sm text-gray-600 mb-3 sm:mb-4">{t.eNamDesc}</p>
               <a
                 href={policyLinks.eNam}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium"
+                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium text-sm sm:text-base"
               >
                 {t.readMore}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,14 +252,14 @@ const Home = () => {
             </div>
 
             {/* KCC Card */}
-            <div className="bg-green-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t.kcc}</h3>
-              <p className="text-gray-600 text-sm mb-4">{t.kccDesc}</p>
+            <div className="bg-green-50 rounded-lg p-4 sm:p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">{t.kcc}</h3>
+              <p className="text-sm text-gray-600 mb-3 sm:mb-4">{t.kccDesc}</p>
               <a
                 href={policyLinks.kcc}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium"
+                className="inline-flex items-center text-green-700 hover:text-green-800 font-medium text-sm sm:text-base"
               >
                 {t.readMore}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -276,144 +270,80 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Table showing current market prices */}
-        <section>
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{t.marketPricesTitle}</h2>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      {language === 'hi' ? 'उत्पाद' : 'Product'}
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      {t.sellingPrice}
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      {t.marketPrice}
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      {t.priceDiff}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {marketData.map((item, index) => {
-                    const priceDiff = item.marketPrice - item.sellingPrice;
-                    const isPositive = priceDiff >= 0;
-                    return (
-                      <tr key={index} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {item.name}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {formatPrice(item.sellingPrice)}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {formatPrice(item.marketPrice)}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          <span className={`${isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                            {isPositive ? '+' : ''}{formatPrice(priceDiff)}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* Market Prices Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl">💰</span>
-              <h2 className="text-2xl font-bold text-gray-900">{t.currentMarketPrices}</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Object.entries(marketPriceLinks).map(([crop, link]) => (
-                <div key={crop} className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{cropEmojis[crop] || '🌾'}</span>
-                    <h3 className="text-lg font-medium text-gray-900">{crop}</h3>
-                  </div>
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                    title={t.viewMarketPrice}
-                  >
-                    {t.viewMarketPrice}
-                  </a>
+        {/* Market Prices section */}
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">{t.marketPricesTitle}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {marketData.map((item, index) => (
+              <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{item.name}</h3>
+                  <span className="text-2xl">{cropEmojis[item.name]}</span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Market Contacts Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{t.marketContacts}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {marketContacts.map((contact, index) => (
-              <div key={index} className="bg-blue-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{contact.name}</h3>
-                <p className="text-gray-600 mb-2">
-                  <span className="font-medium">{t.location}:</span> {contact.location}
-                </p>
-                <a
-                  href={`tel:${contact.contact}`}
-                  className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
-                >
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  {contact.contact}
-                </a>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-gray-600">{t.sellingPrice}:</span>
+                    <span className="font-medium">{formatPrice(item.sellingPrice)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-gray-600">{t.marketPrice}:</span>
+                    <span className="font-medium">{formatPrice(item.marketPrice)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-gray-600">{t.priceDiff}:</span>
+                    <span className={`font-medium ${item.marketPrice > item.sellingPrice ? 'text-green-600' : 'text-red-600'}`}>
+                      {formatPrice(item.marketPrice - item.sellingPrice)}
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Support Organizations Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">{t.supportOrgs}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Market Contacts section */}
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">{t.marketContacts}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {marketContacts.map((contact, index) => (
+              <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">{contact.name}</h3>
+                <div className="space-y-2 text-sm sm:text-base">
+                  <p className="text-gray-600">
+                    <span className="font-medium">{t.location}:</span> {contact.location}
+                  </p>
+                  <p className="text-gray-600">
+                    <span className="font-medium">{t.contact}:</span> {contact.contact}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Support Organizations section */}
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">{t.supportOrgs}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {supportOrgs.map((org, index) => (
-              <div key={index} className="bg-green-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{org.name}</h3>
-                <p className="text-gray-600 mb-4">
-                  <span className="font-medium">{t.helpOffered}:</span> {org.help}
-                </p>
-                {org.contact.startsWith('http') ? (
-                  <a
-                    href={org.contact}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-700 hover:text-green-800 font-medium inline-flex items-center"
-                  >
-                    {t.website}
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                ) : (
-                  <a
-                    href={`tel:${org.contact}`}
-                    className="text-green-700 hover:text-green-800 font-medium inline-flex items-center"
-                  >
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    {org.contact}
-                  </a>
-                )}
+              <div key={index} className="bg-white rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">{org.name}</h3>
+                <div className="space-y-2 text-sm sm:text-base">
+                  <p className="text-gray-600">
+                    <span className="font-medium">{t.helpOffered}:</span> {org.help}
+                  </p>
+                  <p className="text-gray-600">
+                    <span className="font-medium">{t.website}:</span>{' '}
+                    <a
+                      href={org.contact.startsWith('http') ? org.contact : `tel:${org.contact}`}
+                      className="text-blue-600 hover:text-blue-800"
+                      target={org.contact.startsWith('http') ? '_blank' : undefined}
+                      rel={org.contact.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      {org.contact}
+                    </a>
+                  </p>
+                </div>
               </div>
             ))}
           </div>
