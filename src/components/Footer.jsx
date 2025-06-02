@@ -50,13 +50,13 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li className="text-xs sm:text-sm md:text-base text-gray-600">
-                Email: support@krishiconnect.com
+                Email: saurabhkumarjha011@gmail.com
               </li>
               <li className="text-xs sm:text-sm md:text-base text-gray-600">
-                Phone: +91 9876543210
+                Phone: +91 999999991
               </li>
               <li className="text-xs sm:text-sm md:text-base text-gray-600">
-                Address: New Delhi, India
+                Address: ROORKEE, India
               </li>
             </ul>
           </div>
@@ -79,12 +79,12 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://facebook.com"
+                href="https://github.com/saurabhjha001"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
               >
-                <span className="sr-only">Facebook</span>
+                <span className="sr-only">Github</span>
                 <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
                   <path
                     fillRule="evenodd"
@@ -94,7 +94,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/i_skj.official?igsh=MTRnc3Jsa3cwcjFlZA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
@@ -115,7 +115,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-6 sm:mt-8 md:mt-10 pt-6 sm:pt-8 border-t border-gray-200">
           <p className="text-xs sm:text-sm text-center text-gray-500">
-            © {new Date().getFullYear()} KrishiConnect. All rights reserved.
+            © {new Date().getFullYear()}Made by Saurabh Jha | KrishiConnect. All rights reserved.
           </p>
         </div>
       </div>

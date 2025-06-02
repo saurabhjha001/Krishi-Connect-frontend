@@ -4,30 +4,43 @@ import axios from 'axios';
 // For now, we're using JSON Server as a mock backend
 // Later, we can easily switch to a real backend by changing these functions
 
-// Base URL for our API (JSON Server running on port 5000)
-const API_BASE_URL = 'http://localhost:5000/api';
+// Base URL for our API (deployed backend on Render)
+const API_BASE_URL = 'https://crop-backend.onrender.com/api';
 
-const headers = {
-    'Content-Type': 'application/json',
-};
+// Create axios instance with default config
+const axiosInstance = axios.create({
+    baseURL: API_BASE_URL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    // Add timeout to prevent hanging requests
+    timeout: 10000,
+});
 
-const handleResponse = async (response) => {
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Something went wrong');
+// Add response interceptor for better error handling
+axiosInstance.interceptors.response.use(
+    (response) => response.data,
+    (error) => {
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            const errorMessage = error.response.data?.message || 'Server error occurred';
+            throw new Error(errorMessage);
+        } else if (error.request) {
+            // The request was made but no response was received
+            throw new Error('No response from server. Please check your internet connection.');
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            throw new Error('Failed to make request. Please try again later.');
+        }
     }
-    return response.json();
-};
+);
 
 export const api = {
     // Get all products
     getProducts: async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/products`, {
-                method: 'GET',
-                headers,
-            });
-            return handleResponse(response);
+            return await axiosInstance.get('/products');
         } catch (error) {
             console.error('Error fetching products:', error);
             throw error;
@@ -37,12 +50,7 @@ export const api = {
     // Add new product
     addProduct: async (productData) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/products`, {
-                method: 'POST',
-                headers,
-                body: JSON.stringify(productData),
-            });
-            return handleResponse(response);
+            return await axiosInstance.post('/products', productData);
         } catch (error) {
             console.error('Error adding product:', error);
             throw error;
@@ -52,11 +60,7 @@ export const api = {
     // Delete product
     deleteProduct: async (id) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/products/${id}`, {
-                method: 'DELETE',
-                headers,
-            });
-            return handleResponse(response);
+            return await axiosInstance.delete(`/products/${id}`);
         } catch (error) {
             console.error('Error deleting product:', error);
             throw error;
