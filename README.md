@@ -79,7 +79,7 @@ Test endpoint: [https://crop-backend.onrender.com/api/products](https://crop-bac
 
 ### 📞 Market Contact Directory:
 
-* Local mandi contact (e.g., Uttarakhand numbers)
+* Local mandi contact (e.g.,Uttarakhand numbers)
 * Footer: “Made by Saurabh Kumar Jha”
 
 ---
@@ -137,7 +137,7 @@ All prompts were written in a mix of English and Hinglish, just like how I natur
   * `DELETE /api/products/:id`: Delete product
 * **Data Storage**: Flat JSON file (`data/products.json`)
 * **Middleware**: `cors`, `body-parser`
-* **Host**: Render.com
+* **Host**: Render.com 
 
 ---
 
