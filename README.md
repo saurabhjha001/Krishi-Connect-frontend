@@ -20,7 +20,7 @@ Test endpoint: [https://crop-backend.onrender.com/api/products](https://crop-bac
 
 ### 🖥️ Frontend:
 
-* React.js (with Vite)
+* React.js  (with Vite)
 * TailwindCSS
 * JavaScript (ES6+)
 * Cursor AI for UI optimization and feature generation
